@@ -1,0 +1,7 @@
+include LICENSE
+include requirements*.lock
+include Dockerfile
+include compose.yaml
+recursive-include docs *.md
+recursive-include examples *.md *.json
+recursive-include benchmarks *.json

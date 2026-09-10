@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Growth Decision Agent</title>
+  <style>
+    :root { color-scheme: dark; --ink:#f5f4ec; --muted:#a7aaad; --line:#32353b;
+      --card:#17191e; --accent:#b6f36b; --warn:#ff9e64; }
+    * { box-sizing:border-box } body { margin:0; font:15px/1.5 system-ui,sans-serif;
+      background:#0d0e11; color:var(--ink) }
+    main { max-width:1120px; margin:auto; padding:56px 24px 80px }
+    header { display:grid; grid-template-columns:2fr 1fr; gap:40px; align-items:end; margin-bottom:40px }
+    h1 { font-size:clamp(40px,7vw,84px); line-height:.95; letter-spacing:-.06em; margin:0 }
+    h2 { font-size:18px; margin:0 0 16px } p { color:var(--muted) }
+    .tag { color:var(--accent); text-transform:uppercase; letter-spacing:.15em; font-size:12px }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px }
+    .wide { grid-column:span 2 } button { border:0; border-radius:10px; padding:12px 16px;
+      background:var(--accent); color:#111; font-weight:700; cursor:pointer }
+    button:disabled { opacity:.5 } code { color:var(--accent) }
+    pre { white-space:pre-wrap; max-height:480px; overflow:auto; color:#d7d7d2 }
+    .metric { font-size:28px; font-weight:700; margin:4px 0 }
+    .flow { display:flex; flex-wrap:wrap; gap:8px; color:var(--muted) }
+    .flow span { border:1px solid var(--line); border-radius:999px; padding:7px 12px }
+    #status { color:var(--warn) }
+    @media(max-width:760px){ header,.grid{grid-template-columns:1fr}.wide{grid-column:auto} }
+  </style>
+</head>
+<body><main>
+  <header><div><div class="tag">Evidence-grounded decision support</div>
+    <h1>Growth<br>Decision Agent</h1></div>
+    <p>Detect anomalies, decompose measurable drivers, plan constrained actions and verify them
+      with experiments. Every claim stays attached to its evidence and assumptions.</p></header>
+  <section class="card" style="margin-bottom:16px"><h2>Pipeline</h2><div class="flow">
+    <span>typed input</span><span>→</span><span>robust baseline</span><span>→</span>
+    <span>factor decomposition</span><span>→</span><span>guarded playbook</span><span>→</span>
+    <span>experiment</span></div></section>
+  <div class="grid">
+    <section class="card"><div class="tag">Local demo</div><h2>Run a simulated incident</h2>
+      <p>Uses a fixed, reproducible dataset. No API key or external service.</p>
+      <button id="run">Run analysis</button><p id="status">Ready</p></section>
+    <section class="card"><div class="tag">Detected</div><div class="metric" id="count">—</div>
+      <p>anomalies after channel and weekday baselines</p></section>
+    <section class="card"><div class="tag">Runtime</div><div class="metric" id="runtime">—</div>
+      <p>reported by the pipeline on this machine</p></section>
+    <section class="card wide"><h2>Evidence and action</h2><pre id="report">Run the demo to inspect the report.</pre></section>
+    <section class="card"><h2>Interfaces</h2><p><a href="/docs" style="color:var(--accent)">OpenAPI docs</a></p>
+      <p><code>POST /v1/jobs</code><br><code>POST /v1/jobs/{id}/scenarios</code><br>
+      <code>POST /v1/jobs/{id}/budget</code><br><code>POST /v1/jobs/{id}/experiments</code></p>
+    </section>
+  </div>
+</main><script>
+const run=document.querySelector('#run'), status=document.querySelector('#status');
+run.onclick=async()=>{run.disabled=true;status.textContent='Analyzing…';
+try{const sample=await fetch('/v1/examples').then(r=>r.json());
+const response=await fetch('/v1/analyze',{method:'POST',headers:{'content-type':'application/json'},
+body:JSON.stringify(sample.analysis)});const data=await response.json();if(!response.ok)throw Error('Request failed');
+document.querySelector('#count').textContent=data.anomalies.length;
+document.querySelector('#runtime').textContent=data.timings_ms.total+' ms';
+document.querySelector('#report').textContent=JSON.stringify({anomalies:data.anomalies,
+findings:data.findings,actions:data.actions},null,2);status.textContent='Complete';
+}catch(e){status.textContent='Could not run the demo';}finally{run.disabled=false}};
+</script></body></html>

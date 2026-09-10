@@ -1,0 +1,13 @@
+services:
+  growth-agent:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - growth-data:/app/var
+    environment:
+      GROWTH_DATABASE_PATH: /app/var/growth.sqlite3
+      GROWTH_LLM_ENABLED: "false"
+
+volumes:
+  growth-data:

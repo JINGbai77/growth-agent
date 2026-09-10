@@ -1,0 +1,21 @@
+{
+  "records": [
+    {"date":"2025-01-06","channel":"ads","visitors":10000,"new_users":1000,"spend":2000},
+    {"date":"2025-01-07","channel":"ads","visitors":10020,"new_users":1002,"spend":2000},
+    {"date":"2025-01-08","channel":"ads","visitors":9980,"new_users":998,"spend":2000},
+    {"date":"2025-01-09","channel":"ads","visitors":10010,"new_users":1001,"spend":2000},
+    {"date":"2025-01-10","channel":"ads","visitors":9990,"new_users":999,"spend":2000},
+    {"date":"2025-01-11","channel":"ads","visitors":10030,"new_users":1003,"spend":2000},
+    {"date":"2025-01-12","channel":"ads","visitors":9970,"new_users":997,"spend":2000},
+    {"date":"2025-01-13","channel":"ads","visitors":10000,"new_users":1000,"spend":2000},
+    {"date":"2025-01-14","channel":"ads","visitors":10020,"new_users":1002,"spend":2000},
+    {"date":"2025-01-15","channel":"ads","visitors":9980,"new_users":998,"spend":2000},
+    {"date":"2025-01-16","channel":"ads","visitors":10010,"new_users":1001,"spend":2000},
+    {"date":"2025-01-17","channel":"ads","visitors":9990,"new_users":999,"spend":2000},
+    {"date":"2025-01-18","channel":"ads","visitors":10030,"new_users":1003,"spend":2000},
+    {"date":"2025-01-19","channel":"ads","visitors":9970,"new_users":997,"spend":2000},
+    {"date":"2025-01-20","channel":"ads","visitors":4000,"new_users":400,"spend":2000}
+  ],
+  "options": {"seasonality":"none","min_history":14},
+  "use_llm": false
+}

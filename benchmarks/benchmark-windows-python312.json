@@ -1,0 +1,187 @@
+{
+  "generated_at": "2026-09-10T13:06:49.870055+00:00",
+  "engine_version": "0.2.0",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": ""
+  },
+  "method": "Validation + offline pipeline + JSON serialization; 3 warmups; no HTTP/DB/LLM",
+  "evaluation": {
+    "data_kind": "synthetic",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "scenarios": 9,
+    "datasets": 450,
+    "records_per_dataset": 252,
+    "evaluated_records": 37800,
+    "detectors": {
+      "robust": {
+        "tp": 450,
+        "fp": 150,
+        "fn": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571
+      },
+      "rolling_mean": {
+        "tp": 400,
+        "fp": 2219,
+        "fn": 50,
+        "precision": 0.15273004963726614,
+        "recall": 0.8888888888888888,
+        "f1": 0.2606712284131639
+      }
+    },
+    "per_scenario": {
+      "normal": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "weekly": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "traffic_drop": {
+        "tp": 50,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "conversion_drop": {
+        "tp": 50,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "mixed_drop": {
+        "tp": 50,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "spike": {
+        "tp": 50,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "sustained_drop": {
+        "tp": 250,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "high_noise": {
+        "tp": 0,
+        "fp": 150,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": null,
+        "f1": 0.0
+      },
+      "gradual_drift": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      }
+    },
+    "driver_accuracy_on_detected_labels": 1.0,
+    "detected_labels_for_driver_scoring": 450,
+    "limitations": [
+      "Generated scenarios share one simulator; results are not business impact.",
+      "Labels cover injected events only; noise and gradual drift are treated as negatives.",
+      "Warm-up rows are excluded; sustained events are scored per point, not per incident.",
+      "Driver labels describe injected arithmetic factors, not real-world causal truth."
+    ]
+  },
+  "latency": [
+    {
+      "records": 252,
+      "iterations": 50,
+      "median_ms": 3.211,
+      "p95_ms": 6.3,
+      "min_ms": 3.122,
+      "max_ms": 12.697
+    },
+    {
+      "records": 9999,
+      "iterations": 50,
+      "median_ms": 194.027,
+      "p95_ms": 234.406,
+      "min_ms": 179.211,
+      "max_ms": 243.356
+    }
+  ]
+}
